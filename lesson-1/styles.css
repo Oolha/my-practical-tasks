@@ -1,0 +1,77 @@
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4rem;
+  padding: 0 2rem 2rem;
+}
+
+.card-example {
+  width: 350px;
+}
+
+.card-example h3 {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #3498db;
+}
+.band-card {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  border-radius: 16px;
+  background: white;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+}
+
+.band-title {
+  font-size: 1.5rem;
+  margin: 0 0 1rem;
+  color: #2d3436;
+  position: relative;
+}
+
+.band-description {
+  color: #636e72;
+  line-height: 1.6;
+}
+
+.long-text {
+  height: 120px;
+}
+
+.overflow-visible .band-description {
+  overflow: visible;
+}
+.overflow-hidden .band-description {
+  overflow: hidden;
+}
+
+.overflow-scroll .band-description {
+  overflow: scroll;
+}
+
+.overflow-auto .band-description {
+  overflow: auto;
+}
+
+.overflow-clip .band-description {
+  overflow: clip;
+}
+
+.overflow-x-scroll .band-description {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+
+.overflow-wrap-example .band-description {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  width: 100%;
+}
+
+.nowrap-text {
+  white-space: nowrap;
+}
