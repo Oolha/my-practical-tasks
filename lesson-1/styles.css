@@ -75,3 +75,36 @@
 .nowrap-text {
   white-space: nowrap;
 }
+.container-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.button {
+  position: relative;
+  overflow: hidden;
+  width: 500px;
+  height: 200px;
+  border: none;
+  padding: 30px;
+  border: 5px solid #3498db;
+  color: #3498db;
+  font-size: 30px;
+}
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(255, 105, 180, 0.6);
+  transform: scale(0);
+  animation: ripple 0.6s linear;
+  width: 20px;
+  height: 20px;
+  margin-left: -10px;
+  margin-top: -10px;
+}
+@keyframes ripple {
+  to {
+    transform: scale(10);
+    opacity: 0;
+  }
+}

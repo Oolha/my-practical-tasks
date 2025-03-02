@@ -1,6 +1,6 @@
-#Working with overflow in CSS
+# Working with overflow in CSS
 
-##Key values:
+## Key values:
 
 Overflow:
 
@@ -12,7 +12,7 @@ Overflow:
 - `auto` - Adds a scrollbar only if content overflows.
 - `clip` - Crops the content as hidden, but does not allow scrolling.
 
-##Scrolling in One Direction:
+## Scrolling in One Direction:
 
 - `overflow-x: scroll; overflow-y: hidden` only horizontal scrolling.
 - `overflow-y: scroll; overflow-x: hidden` only vertical scrolling.
@@ -20,7 +20,7 @@ Overflow:
 - `white-space: nowrap` prevents text wrapping for horizontal scrolling.
   overflow-x and overflow-y can be dynamically changed using JavaScript.
 
-##Overflow vs. Overflow-wrap: Key Differences
+## Overflow vs. Overflow-wrap: Key Differences
 
 overflow controls what happens when content exceeds its container's dimensions:
 
