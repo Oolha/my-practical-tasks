@@ -1,3 +1,4 @@
+//!-----------------------this у звичайних функціях
 const shoppingCart = {
   items: [],
   totalPrice: 0,
