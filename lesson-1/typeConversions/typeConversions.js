@@ -123,3 +123,9 @@ alert(
     return key != "" && value === meetup ? undefined : value;
   })
 );
+
+const getDate = {
+  getYear() {
+    return Date.getYear();
+  },
+};

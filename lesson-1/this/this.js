@@ -73,3 +73,30 @@ pancake.addIngredient("Молоко");
 pancake.addIngredient("Яйце");
 
 pancake.cook();
+
+//!-------------------------------------------
+
+// Створіть калькулятор
+// важливість: 5
+// Створіть об’єкт calculator з трьома методами:
+
+// read() запитує два значення та зберігає їх як властивості об’єкта з іменами a та b відповідно.
+// sum() повертає суму збережених значень.
+// mul() множить збережені значення і повертає результат.
+
+let calculator = {
+  read() {
+    this.a = a;
+    this.b = b;
+  },
+  sum() {
+    return this.a + this.b;
+  },
+  mul() {
+    return this.a * this.b;
+  },
+};
+
+calculator.read();
+alert(calculator.sum());
+alert(calculator.mul());
