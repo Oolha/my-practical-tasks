@@ -125,7 +125,7 @@ function sumSalaries(department) {
   }
 }
 
-alert(sumSalaries(company)); // 7700
+// alert(sumSalaries(company));
 
 //!--завдання-3.1--
 // Реализовать функцию подсчета факториала числа.
@@ -142,7 +142,7 @@ function factorial(n) {
 
 const userNumber = parseInt(prompt("Введіть число для обчислення факторіалу:"));
 
-alert(`Факторіал числа ${userNumber} дорівнює ${factorial(userNumber)}`);
+// alert(`Факторіал числа ${userNumber} дорівнює ${factorial(userNumber)}`);
 
 //!--завдання-4.1--
 
@@ -243,3 +243,214 @@ const toyotaCars = filterCollection(
   "description"
 );
 console.log(toyotaCars.map((car) => car.name));
+
+//!-----------------OOП---
+
+// **1. Інкапсуляція (Encapsulation)**
+
+// 📌 **Ситуація з реального життя:**
+// 🔹 Уяви, що у тебе є **банківський рахунок**.
+// 🔹 Ти не можеш просто взяти і змінити баланс рахунку напряму (наприклад, +1 000 000$).
+// 🔹 Щоб змінити баланс, ти маєш **зробити транзакцію (покласти/зняти гроші)** через банк.
+
+// **➡ Завдання:**
+// 1. Створи **клас `BankAccount`**.
+// 2. Додай **приватну змінну `balance`** (баланс).
+// 3. Реалізуй методи:
+//    - `deposit(amount)` – покласти гроші.
+//    - `withdraw(amount)` – зняти гроші (але не більше, ніж є на балансі).
+//    - `getBalance()` – переглянути баланс.
+// 4. Переконайся, що **змінювати `balance` напряму не можна**.
+
+class BankAccount {
+  #balance = 0;
+
+  constructor(initialBalance = 0) {
+    if (initialBalance > 0) {
+      this.#balance = initialBalance;
+    }
+  }
+  deposit(amount) {
+    if (amount > 0) {
+      this.#balance += amount;
+      return true;
+    }
+    return false;
+  }
+  withdraw(amount) {
+    if (amount > 0 && amount <= this.#balance) {
+      this.#balance -= amount;
+      return true;
+    }
+    return false;
+  }
+  getBalance() {
+    return this.#balance;
+  }
+}
+
+const account = new BankAccount(100);
+
+console.log(account.getBalance());
+
+account.deposit(50);
+console.log(account.getBalance());
+
+account.withdraw(30);
+console.log(account.getBalance());
+
+// ### **2. Наслідування (Inheritance)**
+
+// 📌 **Ситуація з реального життя:**
+// 🔹 Є **базовий клас `Транспорт` (Vehicle)**, у нього є **марка, модель, рік випуску**.
+// 🔹 Від `Транспорт` можна створити **Автомобіль (Car)** і **Мотоцикл (Bike)**.
+// 🔹 У `Car` є унікальна властивість `doors` (кількість дверей), у `Bike` – `hasSidecar` (чи є боковий причіп).
+
+// **➡ Завдання:**
+// 1. Створи **базовий клас `Vehicle`** (марка, модель, рік).
+// 2. Від нього наслідуй:
+//    - `Car` (додаємо `doors`)
+//    - `Bike` (додаємо `hasSidecar`)
+// 3. В кожному класі реалізуй метод `getInfo()`, який повертає інформацію про транспорт.
+
+class Vehicle {
+  constructor(марка, модель, рік) {
+    this.марка = марка;
+    this.модель = модель;
+    this.рік = рік;
+  }
+  getInfo() {
+    return `Машина марки ${this.марка} моделі ${this.модель} та ${this.рік} року`;
+  }
+}
+
+class Car extends Vehicle {
+  constructor(марка, модель, рік, doors) {
+    super(марка, модель, рік);
+    this.doors = doors;
+  }
+  getInfo() {
+    return `Машина марки ${this.марка} моделі ${this.модель} та ${this.рік} року. Машина має ${this.doors} дверей`;
+  }
+}
+
+class Bike extends Vehicle {
+  constructor(марка, модель, рік, hasSidecar) {
+    super(марка, модель, рік);
+    this.hasSidecar = hasSidecar;
+  }
+  getInfo() {
+    return `Мотоцикл марки ${this.марка} моделі ${this.модель} та ${this.рік} року. ${this.hasSidecar ? "Має боковий причіп" : "Без бокового причепу"}`;
+  }
+}
+
+const transport = new Vehicle("Generic", "Transport", 2020);
+const car = new Car("Toyota", "Camry", 2022, 4);
+const bike = new Bike("Harley-Davidson", "Street 750", 2021, true);
+
+console.log(transport.getInfo());
+console.log(car.getInfo());
+console.log(bike.getInfo());
+
+// ### **3. Поліморфізм (Polymorphism)**
+
+// 📌 **Ситуація з реального життя:**
+// 🔹 Є клас `Тварина (Animal)`, у кожної тварини є метод `makeSound()`.
+// 🔹 Але **кожна тварина видає свій унікальний звук**:
+//    - `Собака` → "Гав!"
+//    - `Кіт` → "Мяу!"
+//    - `Корова` → "Му!"
+
+// **➡ Завдання:**
+// 1. Створи клас `Animal` з методом `makeSound()`, який просто повертає `"Якийсь звук..."`.
+// 2. Від нього створи **3 класи**: `Dog`, `Cat`, `Cow`.
+// 3. В кожному перевизнач метод `makeSound()`, щоб він повертав відповідний звук.
+
+class Animal {
+  makeSound() {
+    return `Якийсь звук...`;
+  }
+}
+class Dog extends Animal {
+  makeSound() {
+    return `Гав`;
+  }
+}
+class Cat extends Animal {
+  makeSound() {
+    return `Мяу`;
+  }
+}
+class Cow extends Animal {
+  makeSound() {
+    return `My`;
+  }
+}
+
+const animal = new Animal();
+const dog = new Dog();
+const cat = new Cat();
+const cow = new Cow();
+
+console.log("Просто тварина:", animal.makeSound());
+console.log("Собака:", dog.makeSound());
+console.log("Кіт:", cat.makeSound());
+console.log("Корова:", cow.makeSound());
+
+// ### **4. Абстракція (Abstraction)**
+
+// 📌 **Ситуація з реального життя:**
+// 🔹 Є **спосіб оплати (`Payment`)**, але в реальному житті він буває різним:
+//    - **Оплата кредитною карткою (`CreditCardPayment`)**
+//    - **Оплата через PayPal (`PayPalPayment`)**
+// 🔹 У кожного типу оплати різний процес транзакції.
+
+// **➡ Завдання:**
+// 1. Створи **абстрактний клас `Payment`**.
+// 2. В ньому додай **метод `processPayment(amount)`, але без реалізації**.
+// 3. Від нього створи підкласи:
+//    - `CreditCardPayment` (логіка оплати карткою).
+//    - `PayPalPayment` (логіка оплати через PayPal).
+// 4. Переконайся, що не можна створити об'єкт `Payment`, а лише його підкласи.
+
+class Payment {
+  constructor() {
+    if (this.constructor === Payment) {
+      throw new Error("Не можна створити екземпляр абстрактного класу Payment");
+    }
+  }
+
+  processPayment(amount) {
+    throw new Error("Помилка");
+  }
+}
+
+class CreditCardPayment extends Payment {
+  constructor(cardNumber, cvv, expiryDate) {
+    super();
+    this.cardNumber = cardNumber;
+    this.cvv = cvv;
+    this.expiryDate = expiryDate;
+  }
+
+  processPayment(amount) {
+    return `Оплата ${amount} грн. карткою ${this.cardNumber.slice(-4)} успішно проведена`;
+  }
+}
+
+class PayPalPayment extends Payment {
+  constructor(email) {
+    super();
+    this.email = email;
+  }
+
+  processPayment(amount) {
+    return `Оплата ${amount} грн. через PayPal-акаунт ${this.email} успішно проведена`;
+  }
+}
+
+const creditCard = new CreditCardPayment("1234567890123456", "123", "12/25");
+console.log(creditCard.processPayment(1000));
+
+const paypal = new PayPalPayment("user@example.com");
+console.log(paypal.processPayment(500));
