@@ -4,9 +4,31 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lesson 3</title>
+    <link rel="stylesheet" href="../styles.css" />
     <script src="/lesson-3/tasks.js" defer></script>
   </head>
   <body>
     <ul id="task-log"></ul>
+    <div class="accordion" id="my-accordion">
+      <div class="item">
+        <div class="header">Питання 1</div>
+        <div class="body">Відповідь 1</div>
+      </div>
+      <div class="item">
+        <div class="header">Питання 2</div>
+        <div class="body">Відповідь 2</div>
+      </div>
+    </div>
+
+    <h2>Чат-симулятор</h2>
+    <div id="chat-container"></div>
+    <div id="input-container">
+      <input
+        type="text"
+        id="message-input"
+        placeholder="Ваше повідомлення..."
+      />
+      <button id="send-button">Відправити</button>
+    </div>
   </body>
 </html>
